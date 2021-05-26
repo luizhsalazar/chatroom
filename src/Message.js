@@ -6,6 +6,7 @@ import { formatDistance } from "date-fns";
 import classnames from "classnames";
 import type { ChatMessage } from "./Chatroom";
 import { noop } from "./utils";
+import { ptBR } from "date-fns/locale";
 
 type MessageTimeProps = {
   time: number,
@@ -21,7 +22,7 @@ export const MessageTime = ({ time, isBot }: MessageTimeProps) => {
       className={classnames("time", isBot ? "left" : "right")}
       title={messageTimeObj.toISOString()}
     >
-      {formatDistance(messageTimeObj, Date.now())}
+      {formatDistance(messageTimeObj, Date.now(), { locale: ptBR})}
     </li>
   );
 };
